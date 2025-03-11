@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="ru"><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <link rel="icon" type="image/png" href="https://apptutor.ru/favicon.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gigachad VPN | Подключение</title>
+    <style>
+        :root {
+            --primary-color: #282828;
+            --secondary-color: #1E1E1E;
+            --text-color: #FFFFFF;
+            --background-color: #F4F7FC;
+            --button-hover-color: #1d92da;
+            --button-active-color: #2A2A2A;
+            --card-bg: #FFFFFF;
+            --shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        body {
+            background: linear-gradient(135deg, #1d91da, #105d99);
+            color: var(--secondary-color);
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            width: 100%;
+            background: var(--card-bg);
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: var(--shadow);
+        }
+        h1 { font-size: 24px; margin-bottom: 20px; color: #181818; }
+        .button {
+            display: block;
+            width: 100%;
+            background-color: var(--primary-color);
+            color: var(--text-color);
+            padding: 15px;
+            font-size: 18px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            margin: 10px 0;
+            transition: background-color 0.3s ease;
+        }
+        .button:hover {
+            background-color: var(--button-hover-color);
+        }
+        .info {
+            font-size: 16px;
+            margin-top: 10px;
+            color: var(--secondary-color);
+        }
+        .code-block {
+            display: block;
+            background-color: #f3f3f3;
+            padding: 10px;
+            border-radius: 5px;
+            font-family: monospace;
+            word-wrap: break-word;
+            overflow-wrap: break-word;
+            max-width: 100%;
+            text-align: left;
+            white-space: pre-wrap;
+        }
+        .link {
+            color: #1d91da;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+    </style>
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+        function fallbackDownloadLink() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if (/iPad|iPhone|iPod|Mac OS|Macintosh/.test(userAgent)) {
+                return "https://apps.apple.com/app/v2raytun/id6476628951";
+            } else if (/android/i.test(userAgent)) {
+                return "https://play.google.com/store/apps/details?id=com.v2raytun.android";
+            } else if (/windows/i.test(userAgent)) {
+                return "https://github.com/hiddify/hiddify-app/releases/latest/download/Hiddify-Windows-Setup-x64.exe";
+            } else {
+                return "https://github.com/hiddify/hiddify-app?tab=readme-ov-file#%EF%B8%8F-get-it-on-stores";
+            }
+        }
+        function appProtocol() {
+            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
+
+            if (/iPad|iPhone|iPod|Mac OS|Macintosh/.test(userAgent)) {
+                return "v2raytun://";
+            } else if (/android/i.test(userAgent)) {
+                return "v2raytun://";
+            } else if (/windows/i.test(userAgent)) {
+                return "hiddify://";
+            } else {
+                return "hiddify://";
+            }
+        }
+        document.addEventListener("DOMContentLoaded", function() {
+            var linkParam = getQueryParam("link");
+            var importLink = linkParam ? decodeURIComponent(linkParam) : "";
+            if (importLink) {
+                document.getElementById("setup-button").addEventListener("click", function() {
+                    window.open(appProtocol() + "import/" + importLink, '_blank'); 
+                });
+            }
+
+            document.getElementById("download-button").href = fallbackDownloadLink();
+            document.getElementById("open-button").href = appProtocol();
+        });
+    </script>
+</head>
+<body>
+    <div class="container">
+        <h1>Подключение VPN</h1>
+        <a id="download-button" class="button" target="_blank" href="https://github.com/hiddify/hiddify-app?tab=readme-ov-file#%EF%B8%8F-get-it-on-stores">Шаг 1: Скачать приложение</a>
+        <p class="info">Шаг 2: <a id="open-button" class="link" target="_blank" href="hiddify://">Откройте приложение</a> и примите правила использования (если они появились)</p>
+        <button id="setup-button" class="button">Шаг 3: Активировать подключение</button>
+        <p class="info">Если что-то не получается — закройте страницу и вернитесь в <a id="bot-url" class="link" href="https://t.me/gigachad_bot">бота</a></p>
+    </div>
+
+</body></html>
