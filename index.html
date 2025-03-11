@@ -100,25 +100,12 @@
                 return "https://github.com/hiddify/hiddify-app?tab=readme-ov-file#%EF%B8%8F-get-it-on-stores";
             }
         }
-        function appProtocol() {
-            var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-            if (/iPad|iPhone|iPod|Mac OS|Macintosh/.test(userAgent)) {
-                return "v2raytun://";
-            } else if (/android/i.test(userAgent)) {
-                return "v2raytun://";
-            } else if (/windows/i.test(userAgent)) {
-                return "hiddify://";
-            } else {
-                return "hiddify://";
-            }
-        }
         document.addEventListener("DOMContentLoaded", function() {
             var linkParam = getQueryParam("link");
             var importLink = linkParam ? decodeURIComponent(linkParam) : "";
             if (importLink) {
                 document.getElementById("setup-button").addEventListener("click", function() {
-                    window.open(appProtocol() + "import/" + importLink, '_blank'); 
+                    window.open("hiddify://import/" + importLink, '_blank'); 
                 });
             }
 
