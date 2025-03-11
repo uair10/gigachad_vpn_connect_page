@@ -89,13 +89,22 @@
         }
         function fallbackDownloadLink() {
             var userAgent = navigator.userAgent || navigator.vendor || window.opera;
-
-            if (/iPad|iPhone|iPod|Mac OS|Macintosh/.test(userAgent)) {
-                return "https://apps.apple.com/app/v2raytun/id6476628951";
+        
+            if (/iPad|iPhone|iPod/.test(userAgent)) {
+                // iOS
+                return "https://apps.apple.com/us/app/hiddify-proxy-vpn/id6596777532";
+            } else if (/Mac OS|Macintosh/.test(userAgent)) {
+                // Mac
+                return "https://github.com/hiddify/hiddify-app/releases/latest/download/Hiddify-MacOS.dmg";
             } else if (/android/i.test(userAgent)) {
+                // Android
                 return "https://play.google.com/store/apps/details?id=com.v2raytun.android";
             } else if (/windows/i.test(userAgent)) {
+                // Windows
                 return "https://github.com/hiddify/hiddify-app/releases/latest/download/Hiddify-Windows-Setup-x64.exe";
+            } else if (/linux/i.test(userAgent)) {
+                // Linux
+                return "https://github.com/hiddify/hiddify-app/releases/latest/download/Hiddify-Linux-x64.AppImage";
             } else {
                 return "https://github.com/hiddify/hiddify-app?tab=readme-ov-file#%EF%B8%8F-get-it-on-stores";
             }
